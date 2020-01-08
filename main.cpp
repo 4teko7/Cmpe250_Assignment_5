@@ -11,11 +11,13 @@ Notes: Anything you want to say about your code that will be helpful in the grad
 #include <fstream>
 #include <vector>
 #include<sstream>
+
 using namespace std;
 void parseInput(ifstream& inFile, long long int &  N, long long int &  M,  vector <long long int> & prices);
 void sort(vector<long long int> & prices, vector<long long int> & pricesSorted);
 void calculate(ofstream & outFile, vector<long long int> & pricesSorted, long long int & N, long long int & M);
 int main(int argc, char* argv[]){
+
 
     if (argc != 3) {
         // cerr should be used for errors
@@ -48,6 +50,10 @@ int main(int argc, char* argv[]){
 
 void calculate(ofstream & outFile, vector<long long int> & pricesSorted, long long int & N, long long int & M){
     long long int count = 0;
+    if(N == 0 || M == 0){
+        outFile << 0;
+        return;
+    }
     if(N > 0)
     outFile << pricesSorted[0] << " ";
     for(long long int i = 1; i < N; i++){
@@ -85,6 +91,7 @@ void parseInput(ifstream& inFile, long long int &  N, long long int &  M,  vecto
     N = stoi(tmp);
     getline(linestream, tmp, ' ');
     M = stoi(tmp);
+
     long long int temp;
     for(long long int i = 0; i < N; i++){
         inFile >> temp;
